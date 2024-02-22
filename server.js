@@ -1,8 +1,12 @@
 const express = require('express')
+const connectDB = require('./db')
 const mongoose = require('mongoose')
+const axios = require('axios')
 const Achievement = require('./models/Achievement')
 
 const app = express()
+
+connectDB()
 
 // middleware
 app.use(express.json())
@@ -17,9 +21,14 @@ app.get('/', async (req, res) => {
     }
 })
 
-mongoose.connect('mongodb://localhost/videoGameAchievements', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Could not connect to MongoDB', err))
+app.get('/games', async (req, res) => {
+    try {
+        const games = await Game.find({}, 'title')
+        res.json(games)
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
