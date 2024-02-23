@@ -4,28 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievement Seekers</title>
-    <style>
-        .game-button {
-            display: block;
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #3f51b5;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer
-        }
-
-        .game-button:hover {
-            background-color: #303f9f
-        }
-    </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-list">
-        
-    </div>
     <div class="container">
         <h1>Achievement Seekers</h1>
         <div id="login-screen">
@@ -38,7 +19,18 @@
         </div>
         <div id="game-list-screen" style="display: none">
             <h2>wmckay802's Video Games</h2>
-            <ul id="game-list"></ul>
+            <div id="game-list">
+                <button class="game-button" onclick="navigateToAchievements('The Legend of Zelda: Breath of the Wild')">The Legend of Zelda: Breath of the Wild</button>
+                <button class="game-button" onclick="navigateToAchievements('Red Dead Redemption 2')">Red Dead Redemption 2</button>
+                <button class="game-button" onclick="navigateToAchievements('The Witcher 3: Wild Hunt')">The Witcher 3: Wild Hunt</button>
+                <button class="game-button" onclick="navigateToAchievements('Overwatch 2')">Overwatch 2</button>
+                <button class="game-button" onclick="navigateToAchievements('Stardew Valley')">Stardew Valley</button>
+                <button class="game-button" onclick="navigateToAchievements('Elden Ring')">Elden Ring</button>
+            </div>
+            <div id="achievements" style="display: none;">
+                <h1 id="game-title">Achievements for <span id="game-title-text"></span></h1>
+                <ul id="achievement-list"></ul>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
